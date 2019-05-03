@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Edit Recipe</h1>
+        <form action="/recipe/<%= recipe._id %>?_method=PUT" method="post">
+            Title: <input type="text" name="title" value="<%= recipe.title %>" /><br />
+            Ingredients: <textarea name="ingredients"><%= recipe.ingredients %></textarea><br />
+            Directions: <textarea name="directions"><%= recipe.directions %></textarea><br />
+            Image: <input type="text" name="images[]" value="<%= recipe.images[0] %>" /><br />
+            Credit: <input type="text" name="credit" value="<%= recipe.credit %>" /><br />
+            <input type="submit" value="Edit Recipe" />
+        </form>
+    </body>
+</html>

@@ -9,5 +9,8 @@
         <img src="<%= recipe.images[0] %>" alt="<%= recipe.title %>" />
         <p><%= recipe.ingredients %></p>
         <p><%= recipe.directions %></p>
+        <div>
+            <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#">Delete</a>
+        </div>
     </body>
 </html>

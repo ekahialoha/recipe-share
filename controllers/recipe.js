@@ -19,11 +19,34 @@ router.get('/', (req, res) => {
             recipes: foundRecipes
         });
     });
-})
+});
+
+router.get('/new', (req, res) => {
+    res.send('new');
+});
+
+router.post('/', (req, res) => {
+    res.send('create');
+});
 
 router.get('/:id', (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
         res.render('recipe/view.ejs', {
+            recipe: recipe
+        });
+    });
+});
+
+router.put('/:id', (req, res) => {
+    Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, recipeUpdated) => {
+        console.log(recipeUpdated);
+        res.redirect('/recipe');
+    });
+});
+
+router.get('/:id/edit', (req, res) => {
+    Recipe.findById(req.params.id, (err, recipe) => {
+        res.render('recipe/edit.ejs', {
             recipe: recipe
         });
     });
@@ -34,14 +57,6 @@ router.get('/seed', (req, res) => {
     Recipe.create(Seed, (err, success) => {
         res.send('data seeded');
     });
-});
-
-router.post('/', (req, res) => {
-    res.send('new');
-});
-
-router.delete('/', (req, res) => {
-    res.send('new');
 });
 
 module.exports = router;
