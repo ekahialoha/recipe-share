@@ -10,7 +10,13 @@
         <p><%= recipe.ingredients %></p>
         <p><%= recipe.directions %></p>
         <div>
-            <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#">Delete</a>
+            <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
         </div>
+        <form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form>
+        <script type="text/javascript">
+            document.getElementById('delete-btn').addEventListener('click', () => {
+                document.getElementById('delete-form').submit();
+            });
+        </script>
     </body>
 </html>

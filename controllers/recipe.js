@@ -12,6 +12,13 @@ const Recipe = require('../models/recipes.js');
 // ======================
 // Routes
 // ======================
+router.get('/seed', (req, res) => {
+    const Seed = require('../models/seeds/recipes.js');
+    Recipe.create(Seed, (err, success) => {
+        res.send('data seeded');
+    });
+});
+
 router.get('/', (req, res) => {
     Recipe.find({}, (err, foundRecipes) => {
         //res.send(foundRecipes);
@@ -52,10 +59,9 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-router.get('/seed', (req, res) => {
-    const Seed = require('../models/seeds/recipes.js');
-    Recipe.create(Seed, (err, success) => {
-        res.send('data seeded');
+router.delete('/:id', (req, res) => {
+    Recipe.findByIdAndRemove(req.params.id, (err, recipeDelete) => {
+        res.redirect('/recipe');
     });
 });
 
