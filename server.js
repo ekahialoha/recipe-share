@@ -24,12 +24,17 @@ const mongoURI = process.env.MONGODB_URI;
 // Allows to use PUT, DELETE, PATCH methods via ?_method in URL
 app.use(methodOverride('_method'));
 // Parses info from POST HTTP methods into object
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+// Allow static files to be served client js, css, images, etc
+app.use(express.static('public'));
 
 // ======================
 // Database
 // ======================
-mongoose.connect(mongoURI, { useNewUrlParser: true });
+mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useFindAndModify: false
+});
 mongoose.connection.once('open', () => {
     console.log('MONGO DATABASE: Connection successful.');
 });
@@ -47,3 +52,6 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
   res.send('index');
 });
+
+const recipeController = require('./controllers/recipe.js');
+app.use('/recipe', recipeController);

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Recipes</h1>
+        <ul>
+            <% recipes.forEach((recipe) => { %>
+                <li><a href="/recipe/<%= recipe._id %>"><%= recipe.title %></a></li>
+            <% }) %>
+        </ul>
+    </body>
+</html>
