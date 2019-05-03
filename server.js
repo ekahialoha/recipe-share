@@ -33,7 +33,8 @@ app.use(express.static('public'));
 // ======================
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true
 });
 mongoose.connection.once('open', () => {
     console.log('MONGO DATABASE: Connection successful.');
