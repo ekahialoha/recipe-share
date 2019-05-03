@@ -38,6 +38,19 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/search', (req, res) => {
+    Recipe.find(
+        { $text: { $search: req.query.q } },
+        { score: { $meta: 'textScore' } }
+    )
+    .sort({ score: { $meta: 'textScore' } })
+    .exec((err, foundRecipes) => {
+        res.render('recipe/search.ejs', {
+            results: foundRecipes
+        });
+    });
+});
+
 router.get('/:id', (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
         res.render('recipe/view.ejs', {

@@ -11,6 +11,10 @@
                 <li><a href="/recipe/<%= recipe._id %>"><%= recipe.title %></a></li>
             <% }) %>
         </ul>
+        <form action="/recipe/search" method="get">
+            <input type="search" name="q" placeholder="SEARCH QUERY HERE" />
+            <input type="submit" value="Find Recipe" />
+        </form>
         <div>
             <a href="/recipe/new">Create New Recipe</a>
         </div>

@@ -13,4 +13,19 @@ const recipeSchema = Schema({
     credit: String,
 }, { timestamps: true });
 
+// Give full text search capabilities
+recipeSchema.index(
+    {
+        title: 'text',
+        ingredients: 'text',
+        directions: 'text'
+    },
+    {
+        weights: {
+            ingredients: 5,
+            title: 2
+        }
+    }
+);
+
 module.exports = mongoose.model('Recipe', recipeSchema);
