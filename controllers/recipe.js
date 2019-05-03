@@ -29,11 +29,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-    res.send('new');
+    res.render('recipe/new.ejs');
 });
 
 router.post('/', (req, res) => {
-    res.send('create');
+    Recipe.create(req.body, (err, createdRecipe) => {
+        res.redirect('/recipe');
+    });
 });
 
 router.get('/:id', (req, res) => {

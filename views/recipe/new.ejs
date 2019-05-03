@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Create Recipe</h1>
+        <form action="/recipe" method="post">
+            Title: <input type="text" name="title" value="" /><br />
+            Ingredients: <textarea name="ingredients"></textarea><br />
+            Directions: <textarea name="directions"></textarea><br />
+            Image: <input type="text" name="images[]" value="" /><br />
+            Credit: <input type="text" name="credit" value="" /><br />
+            <input type="submit" value="Create Recipe" />
+        </form>
+    </body>
+</html>
