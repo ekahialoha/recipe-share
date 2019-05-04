@@ -22,8 +22,8 @@ recipeSchema.index(
     },
     {
         weights: {
-            ingredients: 5,
-            title: 2
+            ingredients: 10,
+            title: 5
         }
     }
 );

@@ -15,7 +15,7 @@ const app = express();
 // ======================
 // Configuration
 // ======================
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const mongoURI = process.env.MONGODB_URI;
 
 // ======================
