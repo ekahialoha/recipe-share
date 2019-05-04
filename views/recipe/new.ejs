@@ -3,8 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <% include ../partials/head.ejs %>
     </head>
     <body>
+        <% include ../partials/header.ejs %>
+        <div class="container">
         <h1>Create Recipe</h1>
         <form action="/recipe" method="post">
             Title: <input type="text" name="title" value="" /><br />
@@ -14,5 +17,6 @@
             Credit: <input type="text" name="credit" value="" /><br />
             <input type="submit" value="Create Recipe" />
         </form>
+        </div>
     </body>
 </html>

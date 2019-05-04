@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-hide-sm-scrn" aria-controls="nav-hide-sm-scrn" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Recipe Share</a>
+
+    <div class="collapse navbar-collapse" id="nav-hide-sm-scrn">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" href="/recipe/new">Create New Recipe</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/recipe/search" method="get">
+            <input type="text" class="form-control mr-sm-2" name="q" placeholder="SEARCH QUERY HERE" required="required" />
+            <input type="submit" class="btn btn-outline-success" value="Find Recipe" />
+        </form>
+    </div>
+</nav>

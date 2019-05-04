@@ -3,14 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <% include ../partials/head.ejs %>
     </head>
     <body>
-        <h1><%= recipe.title %></h1>
-        <img src="<%= recipe.images[0] %>" alt="<%= recipe.title %>" />
-        <p><%= recipe.ingredients %></p>
-        <p><%= recipe.directions %></p>
-        <div>
-            <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
+        <% include ../partials/header.ejs %>
+        <div class="container">
+            <h1><%= recipe.title %></h1>
+            <img src="<%= recipe.images[0] %>" alt="<%= recipe.title %>" />
+            <p><%= recipe.ingredients %></p>
+            <p><%= recipe.directions %></p>
+            <div>
+                <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
+            </div>
         </div>
         <form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form>
         <script type="text/javascript">
