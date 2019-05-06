@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 // ======================
 // Initiate Application
@@ -27,6 +28,18 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 // Allow static files to be served client js, css, images, etc
 app.use(express.static('public'));
+// Allows sessions for users to login
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+// Ensure EJS has access to variables and avoid having to pass them every render call
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    res.locals.error = false;
+    next();
+});
 
 // ======================
 // Database
@@ -53,6 +66,9 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
   res.send('index');
 });
+
+const authController = require('./controllers/auth.js');
+app.use('/auth', authController);
 
 const recipeController = require('./controllers/recipe.js');
 app.use('/recipe', recipeController);

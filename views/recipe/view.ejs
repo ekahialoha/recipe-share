@@ -17,10 +17,6 @@
             </div>
         </div>
         <form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form>
-        <script type="text/javascript">
-            document.getElementById('delete-btn').addEventListener('click', () => {
-                document.getElementById('delete-form').submit();
-            });
-        </script>
+        <% include ../partials/footer.ejs %>
     </body>
 </html>

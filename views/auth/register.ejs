@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <% include ../partials/head.ejs %>
+    </head>
+    <body>
+        <% include ../partials/header.ejs %>
+        <div class="container">
+            <form action="/auth/register" method="post">
+                <div class="form-row my-3">
+                    <div class="col-md-12">
+                        <label for="form-name">Name:</label>
+                        <input type="text" class="form-control" name="name" id="form-name" value="" required="required" />
+                    </div>
+                </div>
+                <div class="form-row my-3">
+                    <div class="col-md-6">
+                        <label for="form-username">Username:</label>
+                        <input type="text" class="form-control" name="username" id="form-username" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="form-password1">Password:</label>
+                        <input type="password" class="form-control" name="password" id="form-password1" value="" required="required" />
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </form>
+        </div>
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>
