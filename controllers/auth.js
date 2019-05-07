@@ -42,7 +42,6 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-console.log('here');
     User.findOne({ username: req.body.username }, (err, foundUser) => {
         if (!foundUser || !bcrypt.compareSync(req.body.password, foundUser.password)) {
             res.render('auth/login.ejs', {

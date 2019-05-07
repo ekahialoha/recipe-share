@@ -64,7 +64,7 @@ app.listen(PORT, () => {
 // Routes/Controllers
 // ======================
 app.get('/', (req, res) => {
-  res.send('index');
+  res.redirect('/recipe');
 });
 
 const authController = require('./controllers/auth.js');

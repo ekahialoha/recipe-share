@@ -12,11 +12,11 @@
             <img src="<%= recipe.images[0] %>" alt="<%= recipe.title %>" />
             <p><%= recipe.ingredients %></p>
             <p><%= recipe.directions %></p>
-            <div>
+            <% if (user) { %><div>
                 <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
-            </div>
+            </div><% } %>
         </div>
-        <form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form>
+        <% if (user) { %><form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form><% } %>
         <% include ../partials/footer.ejs %>
     </body>
 </html>

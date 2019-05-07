@@ -6,6 +6,7 @@
         <% include ../partials/head.ejs %>
     </head>
     <body>
+        <% include ../partials/header.ejs %>
         <h1>Edit Recipe</h1>
         <form action="/recipe/<%= recipe._id %>?_method=PUT" method="post">
             Title: <input type="text" name="title" value="<%= recipe.title %>" /><br />

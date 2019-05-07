@@ -1,0 +1,35 @@
+.flex-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.flex-list > div {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+.flex-list .card-img {
+
+}
+
+@media (min-width: 660px) {
+    .flex-list > div {
+        border: 1px solid #eee;
+        flex-basis: 50%
+    }
+    .flex-list .card-img {
+
+    }
+}
+
+@media (min-width: 1020px) {
+    .flex-list > div {
+        flex-basis: 33%;
+    }
+}
+@media (min-width: 1250px) {
+    .flex-list > div {
+        flex-basis: 24%;
+    }
+}
