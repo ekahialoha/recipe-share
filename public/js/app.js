@@ -11,6 +11,9 @@ $(() => {
     $('#delete-btn').on('click', () => {
         $('#delete-form').submit();
     });
+    $('#remove-list-btn').on('click', () => {
+        $('#remove-list-form').submit();
+    });
 
     // Used on create and edit pages. Allows dynamic image fields to appear and disappear
     $('#form-add').on('click', () => {
@@ -37,7 +40,6 @@ $(() => {
     const $images = $('#images-block').children('img');
     const lastImage = $images.length - 1;
     $('#carousel-prev').on('click', () => {
-        console.log('prev');
         // Hide current image
         $images.eq(currentImage).hide();
 
@@ -48,7 +50,6 @@ $(() => {
         $images.eq(currentImage).show();
     });
     $('#carousel-next').on('click', () => {
-        console.log('next');
         // Hide current image
         $images.eq(currentImage).hide();
 

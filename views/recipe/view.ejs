@@ -28,11 +28,20 @@
                     <p style="white-space: pre-wrap;"><%= recipe.directions %></p>
                 </div>
                 <% if (user) { %><div>
-                    <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
+                    <a href="/recipe/<%= recipe._id %>/edit">Edit</a>
+                    <a href="#" id="delete-btn">Delete</a>
+                    <% if (!user.list.includes(recipe._id.toString())) { %>
+                        <a href="/user/my-list/<%= recipe._id %>">Save For Later</a>
+                    <% } else { %>
+                        <a href="#" id="remove-list-btn">Remove From List</a>
+                    <% } %>
                 </div><% } %>
             </div>
         </div>
-        <% if (user) { %><form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form><% } %>
+        <% if (user) { %>
+            <form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form>
+            <% if (user.list.includes(recipe._id.toString())) { %><form id="remove-list-form" action="/user/my-list/<%= recipe._id %>?_method=DELETE" method="post"></form><% } %>
+        <% } %>
         <% include ../partials/footer.ejs %>
     </body>
 </html>

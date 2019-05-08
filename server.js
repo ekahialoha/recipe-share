@@ -70,5 +70,8 @@ app.get('/', (req, res) => {
 const authController = require('./controllers/auth.js');
 app.use('/auth', authController);
 
+const userController = require('./controllers/user.js');
+app.use('/user', userController);
+
 const recipeController = require('./controllers/recipe.js');
 app.use('/recipe', recipeController);
