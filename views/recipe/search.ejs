@@ -7,7 +7,7 @@
     </head>
     <body>
         <% include ../partials/header.ejs %>
-        <div class="container">
+        <div class="container mt-3">
         <h4>Search results for <span class="font-italic"><%= searchQuery %></span>:</h4>
         <% if (recipes.length > 0) { %>
             <% include recipe-card-list.ejs %>

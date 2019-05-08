@@ -15,7 +15,6 @@ router.get('/my-list', (req, res) => {
         res.render('user/list.ejs', {
             list: user.list
         });
-        console.log(lists.list);
     })
 });
 
