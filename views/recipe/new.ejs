@@ -8,15 +8,48 @@
     <body>
         <% include ../partials/header.ejs %>
         <div class="container">
-        <h1>Create Recipe</h1>
-        <form action="/recipe" method="post">
-            Title: <input type="text" name="title" value="" /><br />
-            Ingredients: <textarea name="ingredients"></textarea><br />
-            Directions: <textarea name="directions"></textarea><br />
-            Image: <input type="text" name="images[]" value="" /><br />
-            Credit: <input type="text" name="credit" value="" /><br />
-            <input type="submit" value="Create Recipe" />
-        </form>
+            <h1>Create Recipe</h1>
+            <form action="/recipe" method="post">
+                <div class="form-row my-3">
+                    <div class="col-md-6">
+                        <label for="form-title">Title:</label>
+                        <input type="text" class="form-control" name="title" id="form-title" value="" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="form-password1">Description:</label>
+                        <input type="text" class="form-control" name="description" id="form-desription" value="" required="required" />
+                    </div>
+                </div>
+                <div class="form-row my-3">
+                    <div class="col-md-6">
+                        <label for="form-ingredients">Ingredients:</label>
+                        <textarea class="form-control" name="ingredients" id="form-ingredients"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="form-directions">Directions:</label>
+                        <textarea class="form-control" name="directions" id="form-directions"></textarea>
+                    </div>
+                </div>
+                <div class="form-row my-3">
+                    <div class="col-md-5">
+                        <label for="form-images">Images:</label>
+                        <div id="recipe-images">
+                            <input type="text" class="form-control" name="images[]" id="form-images" value="" />
+                        </div>
+                    </div>
+                    <div class="col-md-1 mt-4">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success" id="form-add">+</button>
+                            <button type="button" class="btn btn-danger" id="form-remove">-</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="form-credit">Credit:</label>
+                        <input type="text" class="form-control" name="credit" id="form-credit" value="" />
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Create Recipe" />
+            </form>
         </div>
         <% include ../partials/footer.ejs %>
     </body>

@@ -1,3 +1,9 @@
+.navbar-brand {
+    font-family: 'Special Elite', cursive;
+}
+.main-jumbotron {
+    font-family: 'Special Elite', cursive;
+}
 .flex-list {
     display: flex;
     flex-wrap: wrap;
@@ -11,6 +17,10 @@
 }
 .flex-list .card-img {
 
+}
+
+textarea {
+    height: 175px;
 }
 
 @media (min-width: 660px) {
