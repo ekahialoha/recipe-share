@@ -7,14 +7,30 @@
     </head>
     <body>
         <% include ../partials/header.ejs %>
-        <div class="container">
-            <h1><%= recipe.title %></h1>
-            <img src="<%= recipe.images[0] %>" alt="<%= recipe.title %>" />
-            <p style="white-space: pre-wrap;"><%= recipe.ingredients %></p>
-            <p style="white-space: pre-wrap;"><%= recipe.directions %></p>
-            <% if (user) { %><div>
-                <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
-            </div><% } %>
+        <div class="container mt-3">
+            <div class="flex-recipe">
+                <div class="recipe-head-block">
+                    <h1 class="text-center text-uppercase"><%= recipe.title %></h1>
+                </div>
+                <div class="recipe-images-block" id="images-block">
+                    <% if (recipe.images.length > 1) { %><div class="image-carousel-prev material-icons" id="carousel-prev">arrow_back</div>
+                    <div class="image-carousel-next material-icons" id="carousel-next">arrow_forward</div><% } %>
+                    <% recipe.images.forEach((image) => { %>
+                        <img src="<%= image %>" class="img-thumbnail" alt="<%= recipe.title %>" />
+                    <% }) %>
+                </div>
+                <div class="recipe-main-block">
+                    <h5 class="border-bottom">Ingredients:</h5>
+                    <p style="white-space: pre-wrap;"><%= recipe.ingredients %></p>
+                </div>
+                <div class="recipe-main-block">
+                    <h5 class="border-bottom">Directions:</h5>
+                    <p style="white-space: pre-wrap;"><%= recipe.directions %></p>
+                </div>
+                <% if (user) { %><div>
+                    <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
+                </div><% } %>
+            </div>
         </div>
         <% if (user) { %><form id="delete-form" action="/recipe/<%= recipe._id %>?_method=DELETE" method="post"></form><% } %>
         <% include ../partials/footer.ejs %>
