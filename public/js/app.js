@@ -15,6 +15,12 @@ $(() => {
         $('#remove-list-form').submit();
     });
 
+    // Used on list page
+    $('.list-remove').on('click', (element) => {
+        $('#list-remove-form').attr('action', `/user/my-list/${$(event.currentTarget).data('id')}/true?_method=DELETE`);
+        $('#list-remove-form').submit();
+    });
+
     // Used on create and edit pages. Allows dynamic image fields to appear and disappear
     $('#form-add').on('click', () => {
         const $container = $('#recipe-images');

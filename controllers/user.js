@@ -11,8 +11,11 @@ const User = require('../models/users.js');
 const Recipe = require('../models/recipes.js');
 
 router.get('/my-list', (req, res) => {
-    User.findById(req.session.user._id).populate('list').exec((err, lists) => {
-        res.send(lists);
+    User.findById(req.session.user._id).populate('list').exec((err, user) => {
+        res.render('user/list.ejs', {
+            list: user.list
+        });
+        console.log(lists.list);
     })
 });
 
@@ -23,7 +26,6 @@ router.get('/my-list/:id', (req, res) => {
             if (!user.list.includes(recipe._id.toString())) {
                 user.list.push(recipe._id);
                 user.save((err, updatedUser) => {
-                    console.log(updatedUser);
                     req.session.user = updatedUser;
                     req.session.save();
                 });
@@ -34,7 +36,7 @@ router.get('/my-list/:id', (req, res) => {
 });
 
 
-router.delete('/my-list/:id', (req, res) => {
+router.delete('/my-list/:id/:fromList?', (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
         User.findById(req.session.user._id, (err, user) => {
             // Remove from user's list
@@ -45,7 +47,12 @@ router.delete('/my-list/:id', (req, res) => {
                 req.session.user = updatedUser;
                 req.session.save();
             });
-            res.redirect('/user/my-list')
+
+            if(req.params.fromList) {
+                res.redirect('/user/my-list');
+            } else {
+                res.redirect(`/recipe/${req.params.id}`);
+            }
         });
     });
 });

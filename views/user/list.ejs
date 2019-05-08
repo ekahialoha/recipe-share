@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <% include ../partials/head.ejs %>
+    </head>
+    <body>
+        <% include ../partials/header.ejs %>
+        <div class="container mt-3">
+            <h1>Saved List</h1>
+            <% if (list.length > 0) { %>
+                <table class="table table-striped">
+                    <tbody>
+                        <% list.forEach((listItem) => { %>
+                        <tr>
+                            <td class="align-middle"><a href="/recipe/<%= listItem._id %>"><%= listItem.title %></a></td>
+                            <td class="text-right"><a href="#" class="btn btn-danger list-remove" data-id="<%= listItem._id %>">Remove</a></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <form id="list-remove-form" action="/user/my-list/?_method=DELETE" method="post"></form>
+            <% } else { %>
+                No recipes saved.
+            <% } %>
+        </div>
+        <% include ../partials/footer.ejs %>
+    </body>
+</html>
