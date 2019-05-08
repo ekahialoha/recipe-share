@@ -51,7 +51,8 @@ router.get('/search', (req, res) => {
     .sort({ score: { $meta: 'textScore' } })
     .exec((err, foundRecipes) => {
         res.render('recipe/search.ejs', {
-            results: foundRecipes
+            recipes: foundRecipes,
+            searchQuery: req.query.q
         });
     });
 });
