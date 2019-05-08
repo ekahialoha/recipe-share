@@ -8,12 +8,9 @@
     <body>
         <% include ../partials/header.ejs %>
         <div class="container">
-        <% if (results.length > 0) { %>
-            <ul>
-                <% results.forEach((recipe) => { %>
-                    <li><a href="/recipe/<%= recipe._id %>"><%= recipe.title %></a></li>
-                <% }) %>
-            </ul>
+        <h4>Search results for <span class="font-italic"><%= searchQuery %></span>:</h4>
+        <% if (recipes.length > 0) { %>
+            <% include recipe-card-list.ejs %>
         <% } else { %>
             <span>No Result Found. Please try again.</span>
         <% } %>
