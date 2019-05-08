@@ -1,3 +1,18 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+body {
+    margin-bottom: 80px;
+}
+footer {
+    background-color: #f5f5f5;
+    bottom: 0;
+    height: 55px;
+    line-height: 55px;
+    position: absolute;
+    width: 100%;
+}
 .navbar-brand {
     font-family: 'Special Elite', cursive;
 }
@@ -15,21 +30,19 @@
     flex-direction: column;
     flex-basis: 100%;
 }
-.flex-list .card-img {
-
-}
-
 textarea {
     height: 175px;
 }
-
+h1, h2, h3, h4, h5 {
+    font-family: 'Special Elite', cursive;
+}
 @media (min-width: 660px) {
     .flex-list > div {
         border: 1px solid #eee;
         flex-basis: 50%
     }
     .flex-list .card-img {
-
+        height: 150px;
     }
 }
 

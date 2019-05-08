@@ -10,8 +10,8 @@
         <div class="container">
             <h1><%= recipe.title %></h1>
             <img src="<%= recipe.images[0] %>" alt="<%= recipe.title %>" />
-            <p><%= recipe.ingredients %></p>
-            <p><%= recipe.directions %></p>
+            <p style="white-space: pre-wrap;"><%= recipe.ingredients %></p>
+            <p style="white-space: pre-wrap;"><%= recipe.directions %></p>
             <% if (user) { %><div>
                 <a href="/recipe/<%= recipe._id %>/edit">Edit</a> <a href="#" id="delete-btn">Delete</a>
             </div><% } %>

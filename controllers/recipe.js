@@ -20,7 +20,12 @@ router.get('/seed', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    Recipe.find({}, (err, foundRecipes) => {
+    Recipe.find({}, {}, {
+        sort: {
+            createdAt: -1
+        },
+        limit: 10
+    }, (err, foundRecipes) => {
         //res.send(foundRecipes);
         res.render('recipe/index.ejs', {
             recipes: foundRecipes
