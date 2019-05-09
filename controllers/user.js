@@ -10,7 +10,12 @@ const router = express.Router();
 const User = require('../models/users.js');
 const Recipe = require('../models/recipes.js');
 
-router.get('/my-list', (req, res) => {
+// ======================
+// Middleware
+// ======================
+const checkAuth = require('../middleware/check-auth.js');
+
+router.get('/my-list', checkAuth, (req, res) => {
     User.findById(req.session.user._id).populate('list').exec((err, user) => {
         res.render('user/list.ejs', {
             list: user.list
@@ -18,7 +23,7 @@ router.get('/my-list', (req, res) => {
     })
 });
 
-router.get('/my-list/:id', (req, res) => {
+router.get('/my-list/:id', checkAuth, (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
         User.findById(req.session.user._id, (err, user) => {
             // Ensure not already in list
@@ -35,7 +40,7 @@ router.get('/my-list/:id', (req, res) => {
 });
 
 
-router.delete('/my-list/:id/:fromList?', (req, res) => {
+router.delete('/my-list/:id/:fromList?', checkAuth, (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
         User.findById(req.session.user._id, (err, user) => {
             // Remove from user's list

@@ -35,11 +35,8 @@ app.use(session({
     saveUninitialized: false
 }));
 // Ensure EJS has access to variables and avoid having to pass them every render call
-app.use((req, res, next) => {
-    res.locals.user = req.session.user;
-    res.locals.error = false;
-    next();
-});
+const ejsGlobals = require('./middleware/ejs.js');
+app.use(ejsGlobals);
 
 // ======================
 // Database

@@ -10,6 +10,11 @@ const router = express.Router();
 const Recipe = require('../models/recipes.js');
 
 // ======================
+// Middleware
+// ======================
+const checkAuth = require('../middleware/check-auth.js');
+
+// ======================
 // Routes
 // ======================
 router.get('/seed', (req, res) => {
@@ -33,11 +38,11 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', checkAuth, (req, res) => {
     res.render('recipe/new.ejs');
 });
 
-router.post('/', (req, res) => {
+router.post('/', checkAuth, (req, res) => {
     Recipe.create(req.body, (err, createdRecipe) => {
         res.redirect('/recipe');
     });
@@ -59,20 +64,24 @@ router.get('/search', (req, res) => {
 
 router.get('/:id', (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
-        res.render('recipe/view.ejs', {
-            recipe: recipe
-        });
+        if(!recipe) {
+            res.status(404).send('not found');
+        } else {
+            res.render('recipe/view.ejs', {
+                recipe: recipe
+            });
+        }
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', checkAuth, (req, res) => {
     Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, recipeUpdated) => {
         console.log(recipeUpdated);
-        res.redirect('/recipe');
+        res.redirect(`/recipe/${req.params.id}`);
     });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', checkAuth, (req, res) => {
     Recipe.findById(req.params.id, (err, recipe) => {
         res.render('recipe/edit.ejs', {
             recipe: recipe
@@ -80,7 +89,7 @@ router.get('/:id/edit', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', checkAuth, (req, res) => {
     Recipe.findByIdAndRemove(req.params.id, (err, recipeDelete) => {
         res.redirect('/recipe');
     });

@@ -49,7 +49,16 @@ router.post('/login', (req, res) => {
             });
         } else {
             req.session.user = foundUser;
-            res.redirect('/recipe');
+
+            // Determine what url we are redirecting the user to
+            let goTo = '';
+            if (req.session.unauthedRoute) {
+                goTo = req.session.unauthedRoute;
+                delete req.session.unauthedRoute;
+            } else {
+                goTo = '/recipe';
+            }
+            res.redirect(goTo);
         }
     });
 });
