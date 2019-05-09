@@ -11,6 +11,9 @@
             <div class="flex-recipe">
                 <div class="recipe-head-block">
                     <h1 class="text-center text-uppercase"><%= recipe.title %></h1>
+                    <% if (recipe.credit) { %>
+                    <h5 class="text-center">Credit: <%=recipe.credit %></h5>
+                    <% } %>
                 </div>
                 <div class="recipe-images-block" id="images-block">
                     <% if (recipe.images.length > 1) { %><div class="image-carousel-prev material-icons" id="carousel-prev">arrow_back</div>
