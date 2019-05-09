@@ -14,10 +14,12 @@
                 </div>
                 <div class="recipe-images-block" id="images-block">
                     <% if (recipe.images.length > 1) { %><div class="image-carousel-prev material-icons" id="carousel-prev">arrow_back</div>
-                    <div class="image-carousel-next material-icons" id="carousel-next">arrow_forward</div><% } %>
+
+                    <% } %>
                     <% recipe.images.forEach((image) => { %>
                         <img src="<%= image %>" class="img-thumbnail" alt="<%= recipe.title %>" />
                     <% }) %>
+                    <% if (recipe.images.length > 1) { %><div class="image-carousel-next material-icons" id="carousel-next">arrow_forward</div><% } %>
                 </div>
                 <div class="recipe-main-block">
                     <h5 class="border-bottom">Ingredients:</h5>
@@ -28,12 +30,12 @@
                     <p style="white-space: pre-wrap;"><%= recipe.directions %></p>
                 </div>
                 <% if (user) { %><div class="btn-group">
-                    <a href="/recipe/<%= recipe._id %>/edit" class="btn btn-primary">Edit</a>
-                    <a href="#" id="delete-btn" class="btn btn-danger">Delete</a>
+                    <a href="/recipe/<%= recipe._id %>/edit" class="btn btn-outline-primary">Edit</a>
+                    <a href="#" id="delete-btn" class="btn btn-outline-danger">Delete</a>
                     <% if (!user.list.includes(recipe._id.toString())) { %>
-                        <a href="/user/my-list/<%= recipe._id %>" class="btn btn-success">Save For Later</a>
+                        <a href="/user/my-list/<%= recipe._id %>" class="btn btn-outline-success">Save For Later</a>
                     <% } else { %>
-                        <a href="#" id="remove-list-btn" class="btn btn-warning">Remove From List</a>
+                        <a href="#" id="remove-list-btn" class="btn btn-outline-warning">Remove From List</a>
                     <% } %>
                 </div><% } %>
             </div>

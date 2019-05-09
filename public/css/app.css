@@ -21,6 +21,12 @@ footer {
     background-size: 100%;
     font-family: 'Special Elite', cursive;
 }
+textarea.form-control {
+  height: 250px;
+}
+h1, h2, h3, h4, h5 {
+    font-family: 'Special Elite', cursive;
+}
 .flex-list {
     display: flex;
     flex-wrap: wrap;
@@ -32,54 +38,32 @@ footer {
     flex-direction: column;
     flex-basis: 100%;
 }
-textarea {
-    height: 175px;
-}
-h1, h2, h3, h4, h5 {
-    font-family: 'Special Elite', cursive;
-}
+
 .flex-recipe {
-    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
 }
 .flex-recipe > div {
     padding: 3px;
 }
-.recipe-head-block {
-    flex-basis: 40%;
-}
-.recipe-images-block {
-    flex-basis: 58%;
-}
-.recipe-images-block > img {
-    width: 100%;
-}
-.recipe-main-block {
-    flex-basis: 48%;
-}
-.recipe-main-block > h4 {
-}
+
 .image-carousel-prev {
     cursor: pointer;
-    left: 2%;
-    position: relative;
-    top: 50%;
+    display: inline-block;
 }
 .image-carousel-next {
     cursor: pointer;
-    left: 90%;
-    position: relative;
-    top: 100%;
+    display: inline-block;
 }
 .image-carousel-prev:hover, .image-carousel-next:hover {
     color: #eee;
 }
 .recipe-images-block > img {
     display: none;
+    width: 80%;
 }
 .recipe-images-block > img:first-of-type {
-    display: block;
+    display: inline-block;
 }
 @media (min-width: 660px) {
     .flex-list > div {
@@ -89,15 +73,32 @@ h1, h2, h3, h4, h5 {
     .flex-list .card-img {
         height: 150px;
     }
+    .recipe-images-block > img {
+        display: none;
+        width: 88%;
+    }
 }
 
 @media (min-width: 1020px) {
     .flex-list > div {
         flex-basis: 33%;
     }
+    .recipe-head-block {
+        flex-basis: 40%;
+    }
+    .recipe-images-block {
+        flex-basis: 58%;
+    }
+    .recipe-main-block {
+        flex-basis: 48%;
+    }
 }
 @media (min-width: 1250px) {
     .flex-list > div {
         flex-basis: 24%;
+    }
+    .recipe-images-block > img {
+        display: none;
+        width: 90%;
     }
 }

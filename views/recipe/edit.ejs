@@ -7,7 +7,7 @@
     </head>
     <body>
         <% include ../partials/header.ejs %>
-        <div class="container">
+        <div class="container mt-3">
             <h1>Edit Recipe</h1>
             <form action="/recipe/<%= recipe._id %>?_method=PUT" method="post">
                 <div class="form-row my-3">
@@ -30,7 +30,9 @@
                     <div class="col-md-5">
                         <label for="form-images">Images:</label>
                         <div id="recipe-images">
-                            <input type="text" class="form-control" name="images[]" id="form-images"  value="<%= recipe.images[0] %>" />
+                            <% recipe.images.forEach((image) => { %>
+                                <input type="text" class="form-control" name="images[]" id="form-images"  value="<%= image %>" />
+                            <% }) %>
                         </div>
                     </div>
                     <div class="col-md-1 mt-4">
