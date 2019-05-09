@@ -17,8 +17,8 @@ footer {
     font-family: 'Special Elite', cursive;
 }
 .main-jumbotron {
-    background: url(https://www.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/06/29/Pictures/_a9de93ca-5ca6-11e7-a7a5-fdf01393e65b.jpg);
-    background-size: 100%;
+    background: url(https://i.imgur.com/DsjQJeH.jpg);
+    background-size: cover;
     font-family: 'Special Elite', cursive;
 }
 textarea.form-control {
